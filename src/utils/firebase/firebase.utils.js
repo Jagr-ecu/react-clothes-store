@@ -7,7 +7,8 @@ import {
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    onAuthStateChanged
 } from 'firebase/auth'
 import {
     getFirestore,
@@ -35,12 +36,19 @@ provider.setCustomParameters({
     prompt: "select_account"
 })
 
+//obtiene autenticacion de las cuentas
 export const auth = getAuth()
+//inicio de sesion con google con ventana emergente
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
+//inicio de sesion con google con cambio de pestaña y redireccion
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
 
+//obtiene instancia de bd
 export const db = getFirestore()
 
+//crea un documento del usuario registrado, ya sea por google o por email, 
+//en caso de email se agrega informacion adicional que es el nombre de usuario
+//en caso de que el usuario ya exista no crea uno nuevo y retorna el usuario que ya esta registrado
 export const createUserDocumentFromAuth = async(userAuth, additionalInformation = {}) => {
     if(!userAuth) return
 
@@ -69,16 +77,23 @@ export const createUserDocumentFromAuth = async(userAuth, additionalInformation 
    return userDocRef
 }
 
+//crea un usuario con email y contraseña
 export const createAuthUserWithEmailAndPassword = async ( email, password ) => {
     if(!email || !password) return
 
     return await createUserWithEmailAndPassword(auth, email, password)
 }
    
+//inicia sesion con email y contraseña
 export const signInAuthUserWithEmailAndPassword = async ( email, password ) => {
     if(!email || !password) return
 
     return await signInWithEmailAndPassword(auth, email, password)
 }
 
+//cierra sesion de usuario
 export const signOutUser = async() => await signOut(auth)
+
+//verifica que el usuario haya iniciado sesion anteriormente
+export const onAuthStateChangedListener = (callback) => 
+    onAuthStateChanged(auth, callback)
