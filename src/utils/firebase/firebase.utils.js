@@ -94,6 +94,6 @@ export const signInAuthUserWithEmailAndPassword = async ( email, password ) => {
 //cierra sesion de usuario
 export const signOutUser = async() => await signOut(auth)
 
-//verifica que el usuario haya iniciado sesion anteriormente
+//verifica si hay una sesion de usuario, sino retorna null
 export const onAuthStateChangedListener = (callback) => 
     onAuthStateChanged(auth, callback)
