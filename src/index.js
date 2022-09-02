@@ -10,6 +10,7 @@ import { ProductsProvider } from './context/ProductsContext';
 
 import "@fontsource/roboto-condensed";
 import './index.scss';
+import { CartProvider } from './context/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,9 @@ root.render(
     <BrowserRouter>
       <UserProvider>
         <ProductsProvider>
-          <App />
+          <CartProvider>
+            <App />
+          </CartProvider>
         </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
