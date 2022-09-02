@@ -3,11 +3,11 @@ import {
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
-} from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
+} from "../../utils/firebase/Firebase";
+import Button from "../button/Button";
 
-import FormInput from "../form-input/form-input.component";
-import "./sign-in-form.styles.scss";
+import FormInput from "../form-input/FormInput";
+import "./signInForm.scss";
 
 const defaultFormFields = {
   email: "",

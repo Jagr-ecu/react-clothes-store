@@ -2,10 +2,10 @@ import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
 import { ReactComponent as ShopLogo } from "../assets/crown.svg";
-import { UserContext } from "../context/user.context";
-import { signOutUser } from "../utils/firebase/firebase.utils";
+import { UserContext } from "../context/UserContext";
+import { signOutUser } from "../utils/firebase/Firebase";
 
-import "./navigation.styles.scss";
+import "./navigation.scss";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);

@@ -5,8 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 
 import App from './App';
 
-import { UserProvider } from './context/user.context';
-import { ProductsProvider } from './context/products.context';
+import { UserProvider } from './context/UserContext';
+import { ProductsProvider } from './context/ProductsContext';
 
 import "@fontsource/roboto-condensed";
 import './index.scss';

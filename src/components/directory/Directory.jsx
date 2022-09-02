@@ -1,7 +1,7 @@
 import React from 'react'
 
-import CategoryItem from '../category-item/category-item.component';
-import './directory.styles.scss'
+import CategoryItem from '../category-item/CategoryItem';
+import './directory.scss'
 
 
 const Directory = ({ categories }) => {
