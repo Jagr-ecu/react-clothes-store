@@ -15,7 +15,7 @@ function Home() {
     },
     {
       "id": 3,
-      "title": "Zapatos",
+      "title": "Deportivos",
       "imageUrl": "https://i.ibb.co/0jqHpnp/sneakers.png"
     },
     {
