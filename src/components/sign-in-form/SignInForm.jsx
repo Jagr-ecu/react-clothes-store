@@ -4,7 +4,7 @@ import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/Firebase";
-import Button from "../button/Button";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/Button";
 
 import FormInput from "../form-input/FormInput";
 import "./signInForm.scss";
@@ -18,7 +18,6 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
   };
@@ -27,19 +26,22 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(email, password)
+      const { user } = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
 
       resetFormField();
     } catch (error) {
-      switch(error.code){
-        case 'auth/wrong-password':
-          alert(alert("Contraseña incorrecta"))
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert(alert("Contraseña incorrecta"));
           break;
-        case 'auth/user-not-found':
-          alert(alert("No se ha encontrado usuario asociado a esta cuenta"))
+        case "auth/user-not-found":
+          alert(alert("No se ha encontrado usuario asociado a esta cuenta"));
           break;
         default:
-          console.log(error)
+          console.log(error);
       }
     }
   };
@@ -52,7 +54,6 @@ const SignInForm = () => {
   const resetFormField = () => {
     setFormFields(defaultFormFields);
   };
-
 
   return (
     <div className="sign-in-container">
@@ -79,7 +80,11 @@ const SignInForm = () => {
 
         <div className="buttons-container">
           <Button type="submit">Entrar</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            type="button"
+            onClick={signInWithGoogle}
+          >
             Entrar con Google
           </Button>
         </div>

@@ -6,7 +6,7 @@ import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/CartContext";
 
 import { ReactComponent as ShopLogo } from "../assets/crown.svg";
-import "./navigation.scss";
+import { NavigationContainer, NavLink, NavLinksContainer, LogoContainer } from "./NavigationStyles";
 import CartIcon from "../components/cart-icon/CartIcon";
 import CartDropdown from "../components/cart-dropdown/CartDropdown";
 
@@ -17,31 +17,31 @@ const Navigation = () => {
   return (
     <Fragment>
       {/**Fragment sirve en caso de que queramos encerrar todo el componente y no crear un nuevo elemento */}
-      <div className="navigation">
-        <Link className="logo-container" to="/">
-          <ShopLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
+      <NavigationContainer>
+        <LogoContainer to="/">
+          <ShopLogo />
+        </LogoContainer>
+        <NavLinksContainer >
+          <NavLink to="/shop">
             SHOP
-          </Link>
+          </NavLink>
           {
             currentUser ? (
-              <span className="nav-link" onClick={signOutUser}>
+              <NavLink as='span' onClick={signOutUser}>
                 SALIR
-              </span>
+              </NavLink>
             ) : (
-              <Link className="nav-link" to="/auth">
+              <NavLink to="/auth">
                 INICIAR SESIÓN
-              </Link>
+              </NavLink>
             )
           }
           <CartIcon />
-        </div>
+        </NavLinksContainer>
         {
           isCartOpen && <CartDropdown />
         }
-      </div>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   );
