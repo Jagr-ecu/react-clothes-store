@@ -4,9 +4,10 @@ import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/Firebase";
-import Button, { BUTTON_TYPE_CLASSES } from "../button/Button";
 
+import Button, { BUTTON_TYPE_CLASSES } from "../button/Button";
 import FormInput from "../form-input/FormInput";
+
 import "./signInForm.scss";
 
 const defaultFormFields = {
