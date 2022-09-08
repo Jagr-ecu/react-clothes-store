@@ -1,0 +1,2 @@
+los hooks de contextos y reducers no se usan en la pagina
+cambiados por redux
