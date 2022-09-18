@@ -6,7 +6,7 @@ import { selectCartItems } from '../../store/cart/CartSelector'
 import './checkoutItem.scss'
 
 const CheckoutItem = ({cartItem}) => {
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
 
     const cartItems = useSelector(selectCartItems)
     const { name, imageUrl, price, quantity } = cartItem
