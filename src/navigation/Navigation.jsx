@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { signOutUser } from "../utils/firebase/Firebase";
-import { CartContext } from "../context/CartContext";
 import { selectCurrentUser } from "../store/user/UserSelector";
+import { selectIsCartOpen } from "../store/cart/CartSelector";
 
 import { ReactComponent as ShopLogo } from "../assets/crown.svg";
 import { NavigationContainer, NavLink, NavLinksContainer, LogoContainer } from "./NavigationStyles";
@@ -13,7 +13,7 @@ import CartDropdown from "../components/cart-dropdown/CartDropdown";
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser)
-  const { isCartOpen } = useContext(CartContext)
+  const isCartOpen = useSelector(selectIsCartOpen)
 
   return (
     <Fragment>
