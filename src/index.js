@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 import App from "./App";
 
-import { CartProvider } from "./context/CartContext";
-import { store } from "./store/Store";
+import { persistor, store } from "./store/Store";
 
 import "@fontsource/roboto-condensed";
 import "./index.scss";
@@ -15,11 +15,13 @@ import "./index.scss";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </PersistGate>
   </React.StrictMode>
 );
 
