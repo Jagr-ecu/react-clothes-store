@@ -152,4 +152,17 @@ export const signOutUser = async() => await signOut(auth)
 
 //verifica si hay una sesion de usuario, sino retorna null
 export const onAuthStateChangedListener = (callback) => 
-    onAuthStateChanged(auth, callback)
+    onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(
+            auth,
+            (userAuth) => {
+                unsubscribe();
+                resolve(userAuth);
+            },
+            reject
+        )
+    })
+}

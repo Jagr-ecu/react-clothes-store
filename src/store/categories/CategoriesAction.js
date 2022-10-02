@@ -21,6 +21,8 @@ export const fetchCategoriesFailed = (error) => ({
   payload: error,
 });
 
+//funcion reemplazada con fetchCategoriesAsync de CategoriesSaga
+//usada en redux thunk
 export const fetchCategoriesAsync = () => async(dispatch) => {
   dispatch(fetchCategoriesStart());
 

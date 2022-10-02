@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { fetchCategoriesAsync } from "../../store/categories/CategoriesAction";
+import { fetchCategoriesStart } from "../../store/categories/CategoriesAction";
 
 import CategoriesPreview from "../categories-preview/CategoriesPreview";
 import Category from "../category/Category";
@@ -14,7 +14,7 @@ const Shop = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchCategoriesAsync())      
+    dispatch(fetchCategoriesStart())      
   }, [])
 
   return (
