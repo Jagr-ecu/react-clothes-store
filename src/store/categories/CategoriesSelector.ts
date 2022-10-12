@@ -1,9 +1,11 @@
 //en los selectores es donde se hacen la logica de transformacion del dato  
-
 //reselect para memoizar los selectores
 import { createSelector } from "reselect"
 
-const selectCategoryReducer = (state) => state.categories
+import { CategoryMap } from './CategoriesTypes';
+import { CategoriesState } from './CategoriesReducer';
+
+const selectCategoryReducer = (state): CategoriesState => state.categories
 
 export const selectCategories = createSelector(
     [selectCategoryReducer],
@@ -12,11 +14,11 @@ export const selectCategories = createSelector(
 
 export const selectCategoriesMap = createSelector(
     [selectCategories],
-    (categoriesArray) => categoriesArray.reduce((acc, category) => {
+    (categoriesArray): CategoryMap => categoriesArray.reduce((acc, category) => {
         const { title, items } = category
         acc[title.toLowerCase()] = items
         return acc
-    }, {})
+    }, {} as CategoryMap)
 )
 
 export const selectCategoriesIsLoading = createSelector(
