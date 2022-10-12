@@ -20,9 +20,9 @@ const categories = [
   },
   {
     "id": 3,
-    "title": "Zapatos",
+    "title": "Deportivos",
     "imageUrl": "https://i.ibb.co/0jqHpnp/sneakers.png",
-    route: 'shop/zapatos'
+    route: 'shop/deportivos'
   },
   {
     "id": 4,
