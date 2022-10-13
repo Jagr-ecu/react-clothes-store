@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux';
 
-import { CategoryAction, fetchCategoriesStart, fetchCategoriesSuccess, fetchCategoriesFailed } from './CategoriesAction';
-import { CATEGORIES_ACTION_TYPES, Category } from "./CategoriesTypes";
+import { fetchCategoriesStart, fetchCategoriesSuccess, fetchCategoriesFailed } from './CategoriesAction';
+import { Category } from "./CategoriesTypes";
 
 export type CategoriesState = {
     readonly categoriesArray: Category[];
