@@ -1,11 +1,13 @@
-import { UserData } from "./../../utils/firebase/Firebase";
 import {
   ActionWithPayload,
   Action,
   withMatcher,
 } from "./../../utils/reducer/Reducer";
-import { USER_ACTION_TYPES } from "./UserTypes";
 import { AdditionalInformation } from "../../utils/firebase/Firebase";
+import { User } from "firebase/auth";
+
+import { USER_ACTION_TYPES } from "./UserTypes";
+import { UserData } from "./../../utils/firebase/Firebase";
 
 export type SetCurrentUser = ActionWithPayload<
   USER_ACTION_TYPES.SET_CURRENT_USER,
@@ -31,7 +33,7 @@ export type SignUpStart = ActionWithPayload<
 >;
 export type SignUpSuccess = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_SUCCESS,
-  { user: UserData; additionalDetails: AdditionalInformation }
+  { user: User; additionalDetails: AdditionalInformation }
 >;
 export type SignUpFailure = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_FAILED,
@@ -72,7 +74,7 @@ export const emailSignInStart = withMatcher(
 );
 
 export const signInSuccess = withMatcher(
-  (user: UserData): SignInSuccess => ({
+  (user: UserData & { id: string }): SignInSuccess => ({
     type: USER_ACTION_TYPES.SIGN_IN_SUCESS,
     payload: user,
   })
@@ -94,7 +96,7 @@ export const signUpStart = withMatcher(
 
 export const signUpSuccess = withMatcher(
   (
-    user: UserData,
+    user: User,
     additionalDetails: AdditionalInformation
   ): SignUpSuccess => ({
     type: USER_ACTION_TYPES.SIGN_UP_SUCCESS,
