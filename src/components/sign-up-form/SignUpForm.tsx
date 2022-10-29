@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { AuthError, AuthErrorCodes } from 'firebase/auth';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch } from "react-redux";
-import { onSignUpStart } from "../../store/user/UserSaga";
-import Button from "../button/Button";
 
+import { signUpStart } from '../../store/user/UserAction';
+import Button from "../button/Button"; 
 import FormInput from "../form-input/FormInput";
 import './signUpForm.scss'
 
@@ -18,7 +19,7 @@ const SignUpForm = () => {
   const { displayName, email, password, confirmedPassword } = formFields;
   const dispatch = useDispatch();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password !== confirmedPassword) {
@@ -27,18 +28,18 @@ const SignUpForm = () => {
     }
 
     try {   
-      dispatch(onSignUpStart(email, password, displayName));
+      dispatch(signUpStart(email, password, displayName));
       resetFormField();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
         alert("Email ya esta en uso");
       } else {
-        console.log("Error creando el usuario con correo: ", error.message);
+        console.log("Error creando el usuario con correo: ", error);
       }
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormFields({ ...formFields, [name]: value });
