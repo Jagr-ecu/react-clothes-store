@@ -1,6 +1,11 @@
+import { CartItem as Item } from '../../store/cart/CartTypes'
 import './cartItem.scss'
 
-const CartItem = ({ cartItem }) => {
+interface CartItemsProps {
+  cartItem: Item
+}
+
+const CartItem = ({ cartItem }: CartItemsProps) => {
     const { name, quantity, imageUrl, price } = cartItem
   return (
     <div className="cart-item-container">
