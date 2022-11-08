@@ -10,8 +10,8 @@ export const NavigationContainer = styled.div`
   margin-bottom: 25px;
 
   @media screen and (max-width: 800px) {
-    height: 70px;
-    padding: 10px;
+    height: 60px;
+    padding: 10px 10px;
     margin-bottom: 20px;
   }
 `
@@ -24,7 +24,7 @@ export const LogoContainer = styled(Link)`
   @media screen and (max-width: 800px) {
     width: 50px;
     padding: 0px;
-    margin-top: 10px;
+    margin: 5px 0px 0px 15px;
   }
 `
 
@@ -37,7 +37,6 @@ export const NavLinksContainer = styled.div`
   margin-right: 30px;
 
   @media screen and (max-width: 800px) {
-    margin-right: 0px;
     width: 80%;
   }
 `
@@ -45,4 +44,8 @@ export const NavLinksContainer = styled.div`
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
+
+  @media screen and (max-width: 800px) {
+    font-size: 15px;
+  }
 `

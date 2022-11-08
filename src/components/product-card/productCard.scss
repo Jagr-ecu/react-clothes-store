@@ -68,5 +68,18 @@
     .price {
       width: 10%;
     }
+
+    @media screen and (max-width: 800px) {
+      height: 10%;
+
+      .name {
+        width: 82%;
+        margin-bottom: 15px;
+      }
+  
+      .price {
+        width: 18%;
+      }
+    }
   }
 }

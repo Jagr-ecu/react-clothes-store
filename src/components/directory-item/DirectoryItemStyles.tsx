@@ -38,6 +38,19 @@ export const DirectoryItemBody = styled.div`
     font-weight: lighter;
     font-size: 16px;
   }
+
+  @media screen and (max-width: 800px) {
+    padding: 0 10px;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p {
+      font-weight: lighter;
+      font-size: 13px;
+    }
+  }
 `;
 
 export const DirectoryItemContainer = styled.div`
